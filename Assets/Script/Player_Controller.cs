@@ -52,10 +52,10 @@ public class Player_Controller : MonoBehaviour
         rb.velocity = deplacement * speed * Time.deltaTime;
         transform.Translate(new Vector3(movementInput.x, 0, movementInput.y) * speed * Time.deltaTime);
     }
-    //public void DoPush(InputAction.CallbackContext obj)
-    //{
+    public void DoPush(InputAction.CallbackContext obj)
+    {
 
-    //}
+    }
 
     public void OnMove(InputAction.CallbackContext ctx)
     {
