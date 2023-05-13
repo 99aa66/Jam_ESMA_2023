@@ -28,13 +28,14 @@ public class TriggerController : MonoBehaviour
             if (playerIndex == 10)
             {
                 AssignPlayerIndex();
-                GiveMalus(other.gameObject);
+                StartCoroutine(GiveMalus(other.gameObject));
             }
         }
     }
-    private void GiveMalus(GameObject player)
+    private IEnumerator GiveMalus(GameObject player)
     {
-        player.GetComponent<Player_Controller>().speed = -player.GetComponent<Player_Controller>().speed;
+        yield return new WaitForSeconds(3f);
+        player.GetComponent<Player_Controller>().speed =- player.GetComponent<Player_Controller>().speed;
         Debug.Log(player);
         
         //float invertedValue = InputSystem.GetAction("Move").ReadValue<float>();

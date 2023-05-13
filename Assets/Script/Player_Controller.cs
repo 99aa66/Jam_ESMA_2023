@@ -44,6 +44,11 @@ public class Player_Controller : MonoBehaviour
         transform.Translate(new Vector3(movementInput.x, 0, movementInput.y) * speed * Time.deltaTime);
     }
 
+    private void FixedUpdate()
+    {
+        //MovePlayer
+    }
+
     public void OnMove(InputAction.CallbackContext ctx)
     {
         movementInput = ctx.ReadValue<Vector2>();
