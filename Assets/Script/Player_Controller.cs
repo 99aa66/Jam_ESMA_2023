@@ -32,12 +32,14 @@ public class Player_Controller : MonoBehaviour
     private void OnEnable()
     {
         player.FindAction("Jump").started += DoJump;
+        //player.FindAction("Push").started += DoPush;
         move = player.FindAction("Move");
         player.Enable();
     }
     private void OnDisable()
     {
         player.FindAction("Jump").started -= DoJump;
+        //player.FindAction("Push").started += DoPush;
         move = player.FindAction("Move");
         player.Disable();
     }
@@ -50,24 +52,29 @@ public class Player_Controller : MonoBehaviour
         rb.velocity = deplacement * speed * Time.deltaTime;
         transform.Translate(new Vector3(movementInput.x, 0, movementInput.y) * speed * Time.deltaTime);
     }
+    //public void DoPush(InputAction.CallbackContext obj)
+    //{
+
+    //}
 
     public void OnMove(InputAction.CallbackContext ctx)
     {
         movementInput = ctx.ReadValue<Vector2>();
     }
     
-    private void TurnPlayer()
-    {
-        if (movementDirection.sqrMagnitude > 0.01f)
-        {
+    //private void TurnPlayer()
+    //{
+    //    if (movementDirection.sqrMagnitude > 0.01f)
+    //    {
 
-            Quaternion rotation = Quaternion.Slerp(rb.rotation,
-                                                 Quaternion.LookRotation(CameraDirection(movementDirection)),TurnSpeed);
+    //        Quaternion rotation = Quaternion.Slerp(rb.rotation,
+    //                                             Quaternion.LookRotation(CameraDirection(movementDirection)),TurnSpeed);
 
-            rb.MoveRotation(rotation);
+    //        rb.MoveRotation(rotation);
 
-        }
-    } 
+    //    }
+    //} 
+
     public void DoJump(InputAction.CallbackContext obj)
     {
         

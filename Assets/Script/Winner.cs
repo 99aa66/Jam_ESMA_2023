@@ -25,7 +25,7 @@ public class Winner : MonoBehaviour
     private void OnTriggerEnter(Collider other)
     {
         other.GetComponent<MeshRenderer>().enabled = false;
-        other.GetComponent<Rigidbody>().constraints = RigidbodyConstraints.FreezePosition;
+        other.GetComponent<Player_Controller>().speed = 0;
         podium.Add(other.gameObject);
         //int playerID = playerInput.playerIndex;
         //podium.Add(other.GetComponent<Pl>);
