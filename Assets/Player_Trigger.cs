@@ -15,18 +15,4 @@ public class Player_Trigger : MonoBehaviour
     {
         
     }
-
-    private void OnTriggerEnter(Collider other)
-    {
-        if (other.CompareTag("Malus"))
-        {
-            ObtenirIndex();
-        }
-    }
-
-    public void ObtenirIndex()
-    {
-        // Obtenir l'index du joueur à partir du TriggerController
-        playerIndex = GetComponent<TriggerController>().AssignPlayerIndex();
-    }
 }
