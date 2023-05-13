@@ -9,6 +9,8 @@ public class Player_Controller : MonoBehaviour
     
     [SerializeField]
     private float jumpForce = 5f;
+    [SerializeField]
+    private float TurnSpeed = 5f;
     private Vector3 forceDirection = Vector3.zero;
 
 
@@ -53,6 +55,19 @@ public class Player_Controller : MonoBehaviour
     {
         movementInput = ctx.ReadValue<Vector2>();
     }
+    
+    private void TurnPlayer()
+    {
+        if (movementDirection.sqrMagnitude > 0.01f)
+        {
+
+            Quaternion rotation = Quaternion.Slerp(rb.rotation,
+                                                 Quaternion.LookRotation(CameraDirection(movementDirection)),TurnSpeed);
+
+            rb.MoveRotation(rotation);
+
+        }
+    } 
     public void DoJump(InputAction.CallbackContext obj)
     {
         

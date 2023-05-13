@@ -416,7 +416,7 @@ MonoBehaviour:
       m_SingletonActionBindings: []
       m_Flags: 0
     m_Reference: {fileID: 8280696492322894123, guid: d51c3842bf3628d4e8ea7ee62af46336, type: 3}
-  m_PlayerPrefab: {fileID: 4788064311965555146, guid: 418918ea6df46974e870c8ff20ed22e4, type: 3}
+  m_PlayerPrefab: {fileID: 4419879884615039432, guid: fe8fb0588e3a3a2478c7cf43f4f094fc, type: 3}
   m_SplitScreen: 1
   m_MaintainAspectRatioInSplitScreen: 0
   m_FixedNumberOfSplitScreens: -1
@@ -1108,8 +1108,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0b3ed714338f54b4fac1cb78cc662e7c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  podium: []
   playerSpawnManager: {fileID: 0}
+  podium: []
 --- !u!65 &1753324519
 BoxCollider:
   m_ObjectHideFlags: 0
