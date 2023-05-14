@@ -52,9 +52,9 @@ public class PlayerManager : MonoBehaviour
     {
         foreach (GameObject gameObject in Skin)
         {
-            if (gameObject.GetComponent<Player_Controller>().ready == true)
+            if (gameObject.GetComponent<Player_Controller>().ready == true && Skin[index] != playerInputManager.playerPrefab)
             {
-                Readyplayer.Add(gameObject);
+                //Readyplayer.Add(gameObject);
                 gameObject.GetComponent<Player_Controller>().enabled = true;
             }
             else if (gameObject.GetComponent<Player_Controller>().ready == false)

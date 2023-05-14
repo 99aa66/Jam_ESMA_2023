@@ -32,7 +32,6 @@ public class Player_Controller : MonoBehaviour
     private Animator Anim;
     public Transform cam;
     public GameObject attack;
-    public GameObject playerManager;
 
 
     // Start is called before the first frame update
