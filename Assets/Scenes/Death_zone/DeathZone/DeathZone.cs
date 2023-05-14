@@ -15,7 +15,7 @@ public class DeathZone : MonoBehaviour
     }
 
 
-    private void OnTriggerEnter2D(Collider2D collision)
+    private void OnTriggerEnter(Collider collision)
     {
         if (collision.CompareTag("Player")) 
         
@@ -27,10 +27,9 @@ public class DeathZone : MonoBehaviour
         }
     }
 
-    private IEnumerator ReplacePlayer(Collider2D collision) 
+    private IEnumerator ReplacePlayer(Collider collision) 
     
     {
-        
         yield return new WaitForSeconds(1f); 
         collision.transform.position = PlayerSpawn.position;
         fadeSysteme.SetBool("respawn", true);
