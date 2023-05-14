@@ -6,7 +6,9 @@ public class PlayerManager : MonoBehaviour
 {
     public List<PlayerInput> players = new List<PlayerInput>();
     [SerializeField] private List<Transform> startingPoints;
+    [SerializeField] private List<GameObject> Skin;
     private PlayerInputManager playerInputManager;
+    private int index = 0;
 
     // Start is called before the first frame update
     void Awake()
@@ -16,19 +18,34 @@ public class PlayerManager : MonoBehaviour
 
     private void OnEnable()
     {
+        Debug.Log("p join");
         playerInputManager.onPlayerJoined += AddPlayer;
+        
     }
 
     private void OnDisable()
     {
         playerInputManager.onPlayerJoined -= AddPlayer;
+        index--;
     }
 
     public void AddPlayer(PlayerInput player)
     {
-        players.Add(player);
-
+        
+        players.Add(player.GetComponent<PlayerInput>());
         GameObject playerParent = player.gameObject;
         playerParent.transform.position = startingPoints[players.Count - 1].position;
+        playerInputManager.playerPrefab = ChangeSkin();
+        index++;
+
     }
+    private GameObject ChangeSkin()
+    {
+        //Debug.Log(player.name);
+        //Debug.Log("index" + Skin[index]);
+        //player = Skin[index];
+        //Debug.Log(player.name);
+        return Skin[index];
+    }
+
 }
