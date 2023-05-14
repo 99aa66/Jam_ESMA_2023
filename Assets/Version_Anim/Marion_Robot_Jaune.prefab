@@ -625,7 +625,6 @@ GameObject:
   - component: {fileID: 5416010681941296089}
   - component: {fileID: 5416010681941296088}
   - component: {fileID: 5416010681941296103}
-  - component: {fileID: 4742128555934038627}
   - component: {fileID: 140616885281302487}
   - component: {fileID: 5416010681941296101}
   m_Layer: 0
@@ -730,8 +729,8 @@ MonoBehaviour:
   m_ActionEvents:
   - m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
-        m_TargetAssemblyTypeName: Player_Controller, Assembly-CSharp
+      - m_Target: {fileID: 140616885281302487}
+        m_TargetAssemblyTypeName: Player_Commande_2, Assembly-CSharp
         m_MethodName: OnMove
         m_Mode: 0
         m_Arguments:
@@ -746,8 +745,8 @@ MonoBehaviour:
     m_ActionName: Gameplay/Move[/Keyboard/z,/Keyboard/s,/Keyboard/l,/Keyboard/d]
   - m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
-        m_TargetAssemblyTypeName: Player_Controller, Assembly-CSharp
+      - m_Target: {fileID: 140616885281302487}
+        m_TargetAssemblyTypeName: Player_Commande_2, Assembly-CSharp
         m_MethodName: DoJump
         m_Mode: 0
         m_Arguments:
@@ -798,7 +797,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   playerIndex: 10
---- !u!114 &4742128555934038627
+--- !u!114 &140616885281302487
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -807,27 +806,10 @@ MonoBehaviour:
   m_GameObject: {fileID: 5416010681941296100}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d6db5e58d8d2ae044985c7f2e0c7f386, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  speed: 5
-  rotationSpeed: 10
-  jumpForce: 5
-  TurnSpeed: 5
-  isOnGround: 1
---- !u!114 &140616885281302487
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5416010681941296100}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 93add46dd3b97254bb5a62d0266a8f95, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 5
+  speed: 25
   TurnSmoothTime: 0.1
   TurnSmoothVelocity: 0
   rotationSpeed: 10
