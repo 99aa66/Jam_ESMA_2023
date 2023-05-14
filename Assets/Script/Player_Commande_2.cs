@@ -30,7 +30,8 @@ public class Player_Commande_2 : MonoBehaviour
     private Rigidbody rb;
     private Animator Anim;
     public Transform cam;
-    
+    public GameObject attack;
+
 
     // Start is called before the first frame update
     void Awake()
@@ -86,7 +87,9 @@ public class Player_Commande_2 : MonoBehaviour
     }
     public void DoPush(InputAction.CallbackContext obj)
     {
-
+        Anim.SetBool("Attaque", true);
+        attack = GameObject.Find("Attack"); ;
+        attack.GetComponent<BoxCollider>().enabled = true;
     }
 
     public void OnMove(InputAction.CallbackContext ctx)

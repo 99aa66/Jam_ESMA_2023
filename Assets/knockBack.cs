@@ -7,7 +7,7 @@ public class knockBack : MonoBehaviour
     [SerializeField] private float pushForce;
     // Start is called before the first frame update
 
-    private void OnCollisionEnter(Collision collision)
+    private void OnTriggerEnter(Collision collision)
     {
         Rigidbody rb = collision.collider.GetComponent<Rigidbody>();
 
