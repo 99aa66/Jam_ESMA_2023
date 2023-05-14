@@ -6,7 +6,13 @@ using UnityEngine.InputSystem;
 public class Player_Controller : MonoBehaviour
 {
     public float speed = 5;
-    public float rotationSpeed = 10f;
+    //public float rotationSpeed = 10f;
+
+    [SerializeField]
+    private float TurnSmoothTime = 0.1f;
+
+    [SerializeField]
+    private float TurnSmoothVelocity;
 
     [SerializeField]
     private float jumpForce = 5f;
@@ -22,6 +28,7 @@ public class Player_Controller : MonoBehaviour
     private InputAction move;
     private Rigidbody rb;
     private Animator Anim;
+    public Transform cam;
 
     // Start is called before the first frame update
     void Awake()
@@ -58,7 +65,18 @@ public class Player_Controller : MonoBehaviour
         //{
         //    Anim.SetBool("Run", false);
         //}
-        transform.Rotate(Vector3.up, movementInput.x * rotationSpeed * Time.deltaTime);
+        Vector3 direction = new Vector3(movementInput.x, 0f, movementInput.y).normalized;
+        if (direction.magnitude >= 0.1f)
+        {
+            float targetAngle = Mathf.Atan2(direction.x, direction.z) * Mathf.Rad2Deg + cam.eulerAngles.y;
+            float angle = Mathf.SmoothDampAngle(transform.eulerAngles.y, targetAngle, ref TurnSmoothVelocity, TurnSmoothTime);
+            transform.rotation = Quaternion.Euler(0f, angle, 0f);
+
+            Vector3 movDir = Quaternion.Euler(0f, targetAngle, 0f) * Vector3.forward;
+            //controller.Move(movDir.normalized * speed * Time.deltaTime);
+            
+        }
+        //transform.Rotate(Vector3.up, movementInput.x * rotationSpeed * Time.deltaTime);
         transform.Translate(new Vector3(movementInput.x, 0, movementInput.y) * speed * Time.deltaTime);
     }
     public void DoPush(InputAction.CallbackContext obj)

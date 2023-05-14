@@ -29,7 +29,8 @@ public class Player_Commande_2 : MonoBehaviour
     private InputAction move;
     private Rigidbody rb;
     private Animator Anim;
-    Camera cam;
+    public Transform cam;
+    
 
     // Start is called before the first frame update
     void Awake()
@@ -70,16 +71,18 @@ public class Player_Commande_2 : MonoBehaviour
         Vector3 direction = new Vector3(movementInput.x, 0f, movementInput.y).normalized;
         if (direction.magnitude >= 0.1f)
         {
-            //float targetAngle = Mathf.Atan2(direction.x, direction.z) * Mathf.Rad2Deg + cam.eulerAngles.y;
-            //float angle = Mathf.SmoothDampAngle(transform.eulerAngles.y, targetAngle, ref TurnSmoothTime);
-            //transform.rotation = Quaternion.Euler(0f, angle, 0f);
+            float targetAngle = Mathf.Atan2(direction.x, direction.z) * Mathf.Rad2Deg + cam.eulerAngles.y;
+            float angle = Mathf.SmoothDampAngle(transform.eulerAngles.y, targetAngle, ref TurnSmoothVelocity, TurnSmoothTime);
+            transform.rotation = Quaternion.Euler(0f, angle, 0f);
 
-            //Vector3 movDir = Quaterion.Euler(0f, targetAngle, 0f) * Vector3.forward;
+            Vector3 movDir = Quaternion.Euler(0f, targetAngle, 0f) * Vector3.forward;
             //controller.Move(movDir.normalized * speed * Time.deltaTime);
+            Debug.Log(movementInput);
+            transform.Translate(new Vector3(movementInput.x, 0, movementInput.y) * speed * Time.deltaTime);
         }
 
-        transform.Rotate(Vector3.up, movementInput.x * rotationSpeed * Time.deltaTime);
-        transform.Translate(new Vector3(movementInput.x, 0, movementInput.y) * speed * Time.deltaTime);
+        //transform.Rotate(Vector3.up, movementInput.x * rotationSpeed * Time.deltaTime);
+        
     }
     public void DoPush(InputAction.CallbackContext obj)
     {
