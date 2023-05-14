@@ -6,7 +6,8 @@ using UnityEngine.InputSystem;
 public class Player_Controller : MonoBehaviour
 {
     public float speed = 5;
-    
+    public float rotationSpeed = 10f;
+
     [SerializeField]
     private float jumpForce = 5f;
     [SerializeField]
@@ -21,7 +22,6 @@ public class Player_Controller : MonoBehaviour
     private InputAction move;
     private Rigidbody rb;
     private Animator Anim;
-
 
     // Start is called before the first frame update
     void Awake()
@@ -58,7 +58,7 @@ public class Player_Controller : MonoBehaviour
         //{
         //    Anim.SetBool("Run", false);
         //}
-        
+        transform.Rotate(Vector3.up, movementInput.x * rotationSpeed * Time.deltaTime);
         transform.Translate(new Vector3(movementInput.x, 0, movementInput.y) * speed * Time.deltaTime);
     }
     public void DoPush(InputAction.CallbackContext obj)
