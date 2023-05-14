@@ -5,6 +5,7 @@ using UnityEngine.InputSystem;
 public class PlayerManager : MonoBehaviour
 {
     public List<PlayerInput> players = new List<PlayerInput>();
+    public List<GameObject> Readyplayer;
     [SerializeField] private List<Transform> startingPoints;
     [SerializeField] private List<GameObject> Skin;
     private PlayerInputManager playerInputManager;
@@ -49,7 +50,18 @@ public class PlayerManager : MonoBehaviour
     }
     private void Update()
     {
-        
+        foreach (GameObject gameObject in Skin)
+        {
+            if (gameObject.GetComponent<Player_Controller>().ready == true)
+            {
+                Readyplayer.Add(gameObject);
+                gameObject.GetComponent<Player_Controller>().enabled = true;
+            }
+            else if (gameObject.GetComponent<Player_Controller>().ready == false)
+            {
+                gameObject.GetComponent<Player_Controller>().enabled = false;
+            }
+        } 
     }
 
 }

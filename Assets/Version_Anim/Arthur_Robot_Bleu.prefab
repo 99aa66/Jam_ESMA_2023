@@ -541,16 +541,21 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4729689790602491622}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: d6db5e58d8d2ae044985c7f2e0c7f386, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   speed: 5
+  ready: 0
+  TurnSmoothTime: 0.1
+  TurnSmoothVelocity: 0
   rotationSpeed: 10
   jumpForce: 5
-  TurnSpeed: 5
   isOnGround: 1
+  cam: {fileID: 0}
+  attack: {fileID: 0}
+  playerManager: {fileID: 0}
 --- !u!114 &4729689790602491623
 MonoBehaviour:
   m_ObjectHideFlags: 0

@@ -4,8 +4,6 @@ using UnityEngine;
 
 public class Winner : MonoBehaviour
 {
-    public PlayerSpawnManager playerSpawnManager;
-
     [SerializeField]
     private List<GameObject> podium;
 
@@ -25,10 +23,18 @@ public class Winner : MonoBehaviour
     private void OnTriggerEnter(Collider other)
     {
         other.GetComponentInChildren<SkinnedMeshRenderer>().enabled = false;
-        other.GetComponent<Player_Commande_2>().speed = 0;
+        other.GetComponent<Player_Controller>().speed = 0;
         podium.Add(other.gameObject);
         //int playerID = playerInput.playerIndex;
-        //podium.Add(other.GetComponent<Pl>);
-        
+        //podium.Add(other.GetComponent<Pl>); 
+        foreach (GameObject gameObject in podium)
+        {
+            //// Instanciation de l'interface utilisateur à partir du préfabriqué
+            //GameObject uiInstance = Instantiate(uiPrefab, uiContainer);
+
+            //// Configuration des propriétés de l'interface utilisateur en fonction de l'élément actuel
+            //UIElementScript uiElement = uiInstance.GetComponent<UIElementScript>();
+            //uiElement.SetData(elements[i]);
+        }
     }
 }

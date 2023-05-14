@@ -6,6 +6,7 @@ using UnityEngine.InputSystem;
 public class Player_Controller : MonoBehaviour
 {
     public float speed = 5f;
+    public bool ready = false;
 
     [SerializeField]
     private float TurnSmoothTime = 0.1f;
@@ -31,6 +32,7 @@ public class Player_Controller : MonoBehaviour
     private Animator Anim;
     public Transform cam;
     public GameObject attack;
+    public GameObject playerManager;
 
 
     // Start is called before the first frame update
@@ -97,7 +99,10 @@ public class Player_Controller : MonoBehaviour
         movementInput = ctx.ReadValue<Vector2>();
         Anim.SetBool("Run", true);
     }
-
+    public void Start(InputAction.CallbackContext obj)
+    {
+        ready = true;
+    }
     //private void TurnPlayer()
     //{
     //    if (movementDirection.sqrMagnitude > 0.01f)
