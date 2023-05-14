@@ -10,12 +10,16 @@ public class PlayerMovement : MonoBehaviour
     public bool isOnGround = true;
     private float horizontalInput;
     private float fowardInput;
-    private Rigidbody playerRb; 
+    private Rigidbody playerRb;
+    private float boostTimer;
+    private bool boosting ;
 
     // Start is called before the first frame update
     void Start()
     {
         playerRb= GetComponent<Rigidbody>();
+        boostTimer = 0f;
+        boosting = false;
     }
 
     // Update is called once per frame
@@ -34,6 +38,34 @@ public class PlayerMovement : MonoBehaviour
         isOnGround= false;
         
         }
+
+        if(boosting) 
+        
+        {
+            boostTimer += Time.deltaTime;
+
+            if (boostTimer >= 3) 
+            
+            {
+                speed = 5;
+                boostTimer = 0f;
+                boosting= false;
+            
+            }
+        }
+    }
+
+    private void OnTriggerEnter(Collider other)
+    {
+        if(other.tag == "SpeedBoost")
+            
+        { 
+            boosting= true;
+            speed = 10;
+            Destroy(other.gameObject);
+        }
+    
+    
     }
 
     private void OnCollisionEnter(Collision collision)
