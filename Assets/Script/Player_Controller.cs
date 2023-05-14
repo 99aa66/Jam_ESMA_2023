@@ -13,6 +13,7 @@ public class Player_Controller : MonoBehaviour
     private float TurnSpeed = 5f;
     private Vector3 forceDirection = Vector3.zero;
 
+    public bool isOnGround = true;
 
     private Vector2 movementInput;
     private InputActionAsset inputAsset;
@@ -48,15 +49,17 @@ public class Player_Controller : MonoBehaviour
 
     private void Update()
     {
-        Debug.Log(movementInput.x);
-        Vector3 deplacement = new Vector3(movementInput.x, 0f, movementInput.y);
-        rb.velocity = deplacement * speed * Time.deltaTime;
-        transform.Translate(new Vector3(movementInput.x, 0, movementInput.y) * speed * Time.deltaTime);
+        //Debug.Log(movementInput.x);
+        //Vector3 deplacement = new Vector3(movementInput.x, 0f, movementInput.y);
+        //rb.velocity = deplacement * speed * Time.deltaTime;
+        //transform.Translate(new Vector3(movementInput.x, 0, movementInput.y) * speed * Time.deltaTime);
+
+        //if (movementInput.x == 0 && movementInput.y == 0)
+        //{
+        //    Anim.SetBool("Run", false);
+        //}
         
-        if (movementInput.x == 0 && movementInput.y == 0)
-        {
-            Anim.SetBool("Run", false);
-        }
+        transform.Translate(new Vector3(movementInput.x, 0, movementInput.y) * speed * Time.deltaTime);
     }
     public void DoPush(InputAction.CallbackContext obj)
     {
@@ -85,19 +88,21 @@ public class Player_Controller : MonoBehaviour
     public void DoJump(InputAction.CallbackContext obj)
     {
         
-        if (IsGrounded())
+        if (isOnGround)
         {
-            forceDirection += Vector3.up * jumpForce;
+            rb.AddForce(Vector3.up * jumpForce, ForceMode.Impulse);
+            isOnGround = false;
             Anim.SetBool("Jump", true);
         }
         
     }
-    private bool IsGrounded()
+    private void OnCollisionEnter(Collision collision)
     {
-        Ray ray = new Ray(this.transform.position + Vector3.up * 0.25f, Vector3.down);
-        if (Physics.Raycast(ray, out RaycastHit hit, 0.5f))
-            return true;
-        else
-            return false;
+        if (collision.gameObject.CompareTag("Ground"))
+        {
+            isOnGround = true;
+            Anim.SetBool("Jump", false);
+        }
+
     }
 }
