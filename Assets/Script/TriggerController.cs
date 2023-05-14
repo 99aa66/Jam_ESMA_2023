@@ -30,7 +30,7 @@ public class TriggerController : MonoBehaviour
     private IEnumerator GiveMalus(GameObject player)
     {
         yield return new WaitForSeconds(3f);
-        player.GetComponent<Player_Controller>().speed =- player.GetComponent<Player_Controller>().speed;
+        player.GetComponent<Player_Controller>().speed =- player.GetComponent<Player_Commande_2>().speed;
         Debug.Log(player);
         
         //float invertedValue = InputSystem.GetAction("Move").ReadValue<float>();
