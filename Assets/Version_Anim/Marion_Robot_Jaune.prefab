@@ -625,7 +625,7 @@ GameObject:
   - component: {fileID: 5416010681941296089}
   - component: {fileID: 5416010681941296088}
   - component: {fileID: 5416010681941296103}
-  - component: {fileID: 140616885281302487}
+  - component: {fileID: 5862431617322038347}
   - component: {fileID: 5416010681941296101}
   m_Layer: 0
   m_Name: Marion_Robot_Jaune
@@ -649,6 +649,7 @@ Transform:
   - {fileID: 4947744585096680579}
   - {fileID: 3596882704411076803}
   - {fileID: 5416010682049865935}
+  - {fileID: 6454177113530920912}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -729,7 +730,7 @@ MonoBehaviour:
   m_ActionEvents:
   - m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 140616885281302487}
+      - m_Target: {fileID: 0}
         m_TargetAssemblyTypeName: Player_Commande_2, Assembly-CSharp
         m_MethodName: OnMove
         m_Mode: 0
@@ -745,7 +746,7 @@ MonoBehaviour:
     m_ActionName: Gameplay/Move[/Keyboard/z,/Keyboard/s,/Keyboard/l,/Keyboard/d]
   - m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 140616885281302487}
+      - m_Target: {fileID: 0}
         m_TargetAssemblyTypeName: Player_Commande_2, Assembly-CSharp
         m_MethodName: DoJump
         m_Mode: 0
@@ -797,7 +798,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   playerIndex: 10
---- !u!114 &140616885281302487
+--- !u!114 &5862431617322038347
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -806,7 +807,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 5416010681941296100}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 93add46dd3b97254bb5a62d0266a8f95, type: 3}
+  m_Script: {fileID: 11500000, guid: d6db5e58d8d2ae044985c7f2e0c7f386, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   speed: 25
@@ -816,6 +817,7 @@ MonoBehaviour:
   jumpForce: 5
   isOnGround: 1
   cam: {fileID: 5416010682049865935}
+  attack: {fileID: 6233046123697244784}
 --- !u!114 &5416010681941296101
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -828,7 +830,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f892fbb516481fe4892545bb1296edc4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  pushForce: 0
+  pushForce: 20
 --- !u!1 &5416010682049865933
 GameObject:
   m_ObjectHideFlags: 0
@@ -904,6 +906,37 @@ Camera:
   m_OcclusionCulling: 1
   m_StereoConvergence: 10
   m_StereoSeparation: 0.022
+--- !u!1 &6233046123697244784
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 6454177113530920912}
+  m_Layer: 0
+  m_Name: Attack
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &6454177113530920912
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6233046123697244784}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 5416010681941296092}
+  m_RootOrder: 3
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &6506340592805998143
 GameObject:
   m_ObjectHideFlags: 0

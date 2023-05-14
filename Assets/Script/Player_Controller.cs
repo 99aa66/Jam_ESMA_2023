@@ -5,8 +5,7 @@ using UnityEngine.InputSystem;
 
 public class Player_Controller : MonoBehaviour
 {
-    public float speed = 5;
-    //public float rotationSpeed = 10f;
+    public float speed = 5f;
 
     [SerializeField]
     private float TurnSmoothTime = 0.1f;
@@ -14,10 +13,12 @@ public class Player_Controller : MonoBehaviour
     [SerializeField]
     private float TurnSmoothVelocity;
 
+
+    public float rotationSpeed = 10f;
+
     [SerializeField]
     private float jumpForce = 5f;
-    [SerializeField]
-    private float TurnSpeed = 5f;
+
     private Vector3 forceDirection = Vector3.zero;
 
     public bool isOnGround = true;
@@ -29,6 +30,8 @@ public class Player_Controller : MonoBehaviour
     private Rigidbody rb;
     private Animator Anim;
     public Transform cam;
+    public GameObject attack;
+
 
     // Start is called before the first frame update
     void Awake()
@@ -65,6 +68,7 @@ public class Player_Controller : MonoBehaviour
         //{
         //    Anim.SetBool("Run", false);
         //}
+
         Vector3 direction = new Vector3(movementInput.x, 0f, movementInput.y).normalized;
         if (direction.magnitude >= 0.1f)
         {
@@ -74,14 +78,18 @@ public class Player_Controller : MonoBehaviour
 
             Vector3 movDir = Quaternion.Euler(0f, targetAngle, 0f) * Vector3.forward;
             //controller.Move(movDir.normalized * speed * Time.deltaTime);
-            
+            Debug.Log(movementInput);
+            transform.Translate(new Vector3(movementInput.x, 0, movementInput.y) * speed * Time.deltaTime);
         }
+
         //transform.Rotate(Vector3.up, movementInput.x * rotationSpeed * Time.deltaTime);
-        transform.Translate(new Vector3(movementInput.x, 0, movementInput.y) * speed * Time.deltaTime);
+
     }
     public void DoPush(InputAction.CallbackContext obj)
     {
-
+        Anim.SetBool("Attaque", true);
+        attack = GameObject.Find("Attack"); ;
+        attack.GetComponent<BoxCollider>().enabled = true;
     }
 
     public void OnMove(InputAction.CallbackContext ctx)
@@ -89,7 +97,7 @@ public class Player_Controller : MonoBehaviour
         movementInput = ctx.ReadValue<Vector2>();
         Anim.SetBool("Run", true);
     }
-    
+
     //private void TurnPlayer()
     //{
     //    if (movementDirection.sqrMagnitude > 0.01f)
@@ -105,14 +113,14 @@ public class Player_Controller : MonoBehaviour
 
     public void DoJump(InputAction.CallbackContext obj)
     {
-        
+
         if (isOnGround)
         {
             rb.AddForce(Vector3.up * jumpForce, ForceMode.Impulse);
             isOnGround = false;
             Anim.SetBool("Jump", true);
         }
-        
+
     }
     private void OnCollisionEnter(Collision collision)
     {
