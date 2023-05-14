@@ -47,5 +47,9 @@ public class PlayerManager : MonoBehaviour
         //Debug.Log(player.name);
         return Skin[index];
     }
+    private void Update()
+    {
+        
+    }
 
 }
