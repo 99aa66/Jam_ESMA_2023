@@ -4,6 +4,12 @@
 EditorBuildSettings:
   m_ObjectHideFlags: 0
   serializedVersion: 2
-  m_Scenes: []
+  m_Scenes:
+  - enabled: 1
+    path: Assets/Scenes/Test_Mecha_Manu.unity
+    guid: 9fc0d4010bbf28b4594072e72b8655ab
+  - enabled: 1
+    path: Assets/Scenes/Kilian_MERDE/Scenes/Test.unity
+    guid: 74a67609dc42ce14ca01f87c63bcd7f3
   m_configObjects:
     com.unity.input.settings: {fileID: 11400000, guid: 7eaa89dc12cb0a84689bb97df0328540, type: 2}

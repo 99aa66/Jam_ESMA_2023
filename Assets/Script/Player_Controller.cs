@@ -19,7 +19,7 @@ public class Player_Controller : MonoBehaviour
     private InputActionMap player;
     private InputAction move;
     private Rigidbody rb;
-    
+    private Animator Anim;
 
 
     // Start is called before the first frame update
@@ -28,6 +28,7 @@ public class Player_Controller : MonoBehaviour
         inputAsset = this.GetComponent<PlayerInput>().actions;
         player = inputAsset.FindActionMap("Gameplay");
         rb = GetComponent<Rigidbody>();
+        Anim = GetComponent<Animator>();
     }
     private void OnEnable()
     {
@@ -51,6 +52,11 @@ public class Player_Controller : MonoBehaviour
         Vector3 deplacement = new Vector3(movementInput.x, 0f, movementInput.y);
         rb.velocity = deplacement * speed * Time.deltaTime;
         transform.Translate(new Vector3(movementInput.x, 0, movementInput.y) * speed * Time.deltaTime);
+        
+        if (movementInput.x == 0 && movementInput.y == 0)
+        {
+            Anim.SetBool("Run", false);
+        }
     }
     public void DoPush(InputAction.CallbackContext obj)
     {
@@ -60,6 +66,7 @@ public class Player_Controller : MonoBehaviour
     public void OnMove(InputAction.CallbackContext ctx)
     {
         movementInput = ctx.ReadValue<Vector2>();
+        Anim.SetBool("Run", true);
     }
     
     //private void TurnPlayer()
@@ -81,7 +88,9 @@ public class Player_Controller : MonoBehaviour
         if (IsGrounded())
         {
             forceDirection += Vector3.up * jumpForce;
+            Anim.SetBool("Jump", true);
         }
+        
     }
     private bool IsGrounded()
     {
