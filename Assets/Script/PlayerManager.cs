@@ -1,3 +1,4 @@
+using Cinemachine;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -8,6 +9,9 @@ public class PlayerManager : MonoBehaviour
     public List<GameObject> Readyplayer;
     [SerializeField] private List<Transform> startingPoints;
     [SerializeField] private List<GameObject> Skin;
+
+    [SerializeField] private List<LayerMask> PlayerLayers;
+
     private PlayerInputManager playerInputManager;
     private int index = 0;
 
@@ -39,6 +43,10 @@ public class PlayerManager : MonoBehaviour
         playerInputManager.playerPrefab = ChangeSkin();
         index++;
 
+        int layerToAdd = (int)Mathf.Log(PlayerLayers[players.Count - 1].value, 2);
+
+        playerParent.GetComponentInChildren<CinemachineFreeLook>().gameObject.layer = layerToAdd;
+        playerParent.GetComponentInChildren<Camera>().cullingMask |= 1 << layerToAdd;
     }
     private GameObject ChangeSkin()
     {
@@ -50,18 +58,18 @@ public class PlayerManager : MonoBehaviour
     }
     private void Update()
     {
-        foreach (GameObject gameObject in Skin)
-        {
-            if (gameObject.GetComponent<Player_Controller>().ready == true && Skin[index] != playerInputManager.playerPrefab)
-            {
-                //Readyplayer.Add(gameObject);
-                gameObject.GetComponent<Player_Controller>().enabled = true;
-            }
-            else if (gameObject.GetComponent<Player_Controller>().ready == false)
-            {
-                gameObject.GetComponent<Player_Controller>().enabled = false;
-            }
-        } 
+        //foreach (GameObject gameObject in Skin)
+        //{
+        //    if (gameObject.GetComponent<Player_Controller>().ready == true && Skin[index] != playerInputManager.playerPrefab)
+        //    {
+        //        //Readyplayer.Add(gameObject);
+        //        gameObject.GetComponent<Player_Controller>().enabled = true;
+        //    }
+        //    else if (gameObject.GetComponent<Player_Controller>().ready == false)
+        //    {
+        //        gameObject.GetComponent<Player_Controller>().enabled = false;
+        //    }
+        //} 
     }
 
 }

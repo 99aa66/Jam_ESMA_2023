@@ -761,12 +761,12 @@ GameObject:
   m_Component:
   - component: {fileID: 9170331430281855136}
   - component: {fileID: 9170331430281855143}
-  - component: {fileID: 9170331430281855142}
   - component: {fileID: 9170331430281855141}
+  - component: {fileID: 9170331430281855142}
   - component: {fileID: 9170331430281855140}
+  - component: {fileID: 7613935510094194467}
   - component: {fileID: 9170331430281855163}
   - component: {fileID: 9170331430557713552}
-  - component: {fileID: 9170331430281855162}
   m_Layer: 0
   m_Name: Marion_Robot_Jaune
   m_TagString: Player
@@ -809,20 +809,6 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 112
   m_CollisionDetection: 0
---- !u!136 &9170331430281855142
-CapsuleCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 9170331430281855161}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  m_Radius: 0.8830781
-  m_Height: 2.9925137
-  m_Direction: 1
-  m_Center: {x: 0.0073332787, y: 0.032123804, z: 0}
 --- !u!95 &9170331430281855141
 Animator:
   serializedVersion: 5
@@ -843,6 +829,20 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
+--- !u!136 &9170331430281855142
+CapsuleCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 9170331430281855161}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  m_Radius: 0.8830781
+  m_Height: 2.9925137
+  m_Direction: 1
+  m_Center: {x: 0.0073332787, y: 0.032123804, z: 0}
 --- !u!114 &9170331430281855140
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -937,6 +937,24 @@ MonoBehaviour:
   m_DefaultActionMap: Gameplay
   m_SplitScreenIndex: -1
   m_Camera: {fileID: 9170331429145553542}
+--- !u!143 &7613935510094194467
+CharacterController:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 9170331430281855161}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Height: 2
+  m_Radius: 0.5
+  m_SlopeLimit: 45
+  m_StepOffset: 0.3
+  m_SkinWidth: 0.08
+  m_MinMoveDistance: 0.001
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!114 &9170331430281855163
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -963,28 +981,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   speed: 25
-  ready: 1
-  TurnSmoothTime: 0.1
-  TurnSmoothVelocity: 0
-  rotationSpeed: 10
   jumpForce: 5
+  ready: 1
+  SmoothTime: 0.05
   isOnGround: 1
   cam: {fileID: 9170331429145553541}
   attack: {fileID: 9170331430373542553}
-  playerManager: {fileID: 0}
---- !u!114 &9170331430281855162
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 9170331430281855161}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f892fbb516481fe4892545bb1296edc4, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  pushForce: 20
 --- !u!1 &9170331430320275034
 GameObject:
   m_ObjectHideFlags: 0
